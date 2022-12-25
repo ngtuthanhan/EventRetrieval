@@ -1,0 +1,1 @@
+mongoimport --uri mongodb://192.168.20.156:27017/Video --collection KeyFrameBatch3V4 --type json --file KeyFrameBatch3V4.json --jsonArray

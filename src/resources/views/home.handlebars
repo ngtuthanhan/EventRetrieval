@@ -1,0 +1,86 @@
+<div id="content" class="content-custom">
+  <div class="wrapper">
+    {{#each courses}}
+    <div class="">
+      <input type="checkbox" id="myCheckbox_{{this._id}}"
+        video="{{this.VideoID}}" frame="{{this.TrueFrame}}"/>
+      <label for="myCheckbox_{{this._id}}" class="label-checkbox">
+        <img
+          src="/{{this.Batch}}/Keyframes/{{this.VideoID}}/{{this.KeyFrame}}"
+          alt="{{this._id}}">
+        <div class="bottom-left">{{this.VideoID}}.mp4</div>
+        <div class="bottom-right">{{this.TrueFrame}}</div>
+        <div class="top-right">
+          <a class="detail-form-btn" href="/KNN/{{this.IDFrame}}">
+            <span>
+              KNN
+            </span>
+          </a>
+        </div>
+
+        <div class="top-left">
+          <a class="detail-form-btn" href="/Detail/{{this.IDFrame}}">
+            <span>
+              Detail
+            </span>
+          </a>
+        </div>
+
+        <!-- <div class="top-left">
+          <button class="detail-form-btn" data-id="{{this.IDFrame}}"
+            data-toggle="modal"
+            data-target="#detail-modal">
+            <span>
+              Detail
+            </span>
+          </button>
+        </div> -->
+      </label>
+    </div>
+    {{/each}}
+  </div>
+</div>
+
+{{!-- Find nearest frame --}}
+<div id="detail-modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-custom" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Neareast Frames</h5>
+        <button type="button" class="close" data-dismiss="modal"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="neareast-frame">
+        {{!-- <p>ABC</p> --}}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // When diaglog confirm clicked
+        var frameID;
+        var neareastFrame = document.getElementById('neareast-frame');
+
+        $('#detail-modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            frameID = button.data('id') // Extract info from data-* attributes
+            neareastFrame.innerHTML = "<h1> Hello " + frameID + "</h1> <h6> "
+            neareastFrame.innerHTML += '{{#each courses}} <h7> {{this.VideoID}}</h7> {{/each}}'
+      
+
+        });
+
+        
+
+
+        
+    })
+
+</script>

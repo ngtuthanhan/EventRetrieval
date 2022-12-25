@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  mongo_db:
+    container_name: mongodb_tiuday
+    build: Dockerfile_mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_db:/data/db
+      - /mlcv:/mlcv
+    
+  system:
+    container_name: system_tiuday
+    build: .
+    ports:
+      - 9000:3000
+    volumes:
+      - /mlcv:/mlcv
+      - /mlcv/WorkingSpace/Personals/nhanntt/AIC22/System:/app
+    environment:
+      PORT: 3000
+      MONGODB_URI: mongodb://mongo_db:27017
+      DB_NAME: Video
+      NAME: KeyFrame_ID
+    depends_on:
+      - mongo_db
+      
+
+  
+volumes:
+  mongo_db: {}

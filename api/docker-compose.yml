@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  aic_tiuday_nhanntt_api:
+    build: .
+    command: python main.py
+    ports: 
+      - 15400:15400
+    volumes:
+      - /mlcv:/mlcv
+      - /mlcv/WorkingSpace/Personals/nhanntt/AIC22/System/api:/api
+    environment:
+      PORT: 15400
+    

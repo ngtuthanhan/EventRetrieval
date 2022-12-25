@@ -1,0 +1,6 @@
+model2/index.npy
+model2/features.npy
+node_modules/
+Dockerfile_mongo/keyframe_p/
+Dockerfile_mongo/*.json
+!Dockerfile_mongo/KeyFrameBatch3V4.json
